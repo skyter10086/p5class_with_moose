@@ -44,7 +44,7 @@ has 'nation' => (
     is => 'rw',
     #isa => 'NationKey',
     coerce => 1, #没有这个设置转换就无效
-    isa => 'NationType',
+    isa => 'NationType', # 说明一下，这里是可以直接用引入包内的subtype的，比如Nation的NationKey
     handles => {
         nation_value => 'get_value',
     },
