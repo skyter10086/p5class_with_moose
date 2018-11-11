@@ -43,7 +43,7 @@ has 'id' => (
 has 'nation' => (
     is => 'rw',
     #isa => 'NationKey',
-    coerce => 1,
+    coerce => 1, #没有这个设置转换就无效
     isa => 'NationType',
     handles => {
         nation_value => 'get_value',
@@ -51,6 +51,8 @@ has 'nation' => (
     required => 1,
 );
 =pod
+#around 可以修改成员变量参数 但实例初始化的时候无效
+#实例初始化时修改参数要用BULD和BUILDARGS
 around 'nation' => sub {
     my $orig = shift;
     my $self = shift;
