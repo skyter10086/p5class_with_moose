@@ -1,8 +1,12 @@
 package Employee;
+
 use lib './';
 use Moose;
 use Moose::Util::TypeConstraints;
+
 use Nation;
+
+with 'JSONable';
 
 subtype 'IDNumber' ,
  as 'Str',
