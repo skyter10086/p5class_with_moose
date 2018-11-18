@@ -2,9 +2,9 @@ use lib './';
 use Employee;
 
 my $emp = Employee->new(
-    name => '曾理',
+    name => '方立',
     sex => 'Male',
-    id => '411302198310203835',
+    id => '41130319831020383X',
     nation => '01',
     
 );
