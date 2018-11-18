@@ -4,6 +4,7 @@ use utf8::all;
 use Moose;
 use Moose::Util::TypeConstraints;
 
+with 'JSONable';
 my $nation_pairs = {
     '01' => '汉族',
     '02' => '蒙古族',
