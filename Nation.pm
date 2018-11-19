@@ -14,14 +14,14 @@ my $nation_pairs = {
 
 };
 
-subtype 'NationKey' ,
+subtype 'NationCode' ,
     as 'Str',
     where {$nation_pairs->{$_}},
     message {"You give a wrong key of Nations!"};
 
 has 'key' => (
     is => 'rw',
-    isa => 'NationKey',
+    isa => 'NationCode',
     clearer => 'clear_key',
     predicate => 'has_key',    
 );
