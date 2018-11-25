@@ -62,9 +62,17 @@ sub connection {
 
 sub _insert {
     my $self = shift;
-    my $vals = shift;
+    my $kvs = shift;
     my $table = $self->TABLE;
-    my $sql = "INSERT INTO [% table %] VALUES()" 
+    my @keys = keys %$kvs;
+    my @vals = values %$kvs;
+    
+    my $sql = sprintf 'INSERT INTO %s(%s) VALUES(%s)', $table, join(",", @keys), join(",", "?" x @keys) ;
+    
+    my $dbh = $self->dbh;
+    
+    return dbh->query($sql, @vals) 
+        or die $dbh->errstr;
 
 }
 
