@@ -39,4 +39,5 @@ my $jj = Person->set_json('{"nation":"02","id":"412924197502163222","name":"jjj"
 print "jj is in ",$jj->get_zip,".\n";
 print "jj's detail now is ", $jj->get_json, "\n";
 
+$jj->connection;
 __END__

@@ -11,6 +11,7 @@ use Moose::Util::TypeConstraints;
 use Nation;
 
 with 'JSONable';
+with  'DBish';
 
 my $SEX = {'01'=>'男', '02'=>'女'};
 my $ZIP = {
@@ -82,6 +83,27 @@ has 'phone' => (
     isa => 'Str',
     is => 'rw',
 );
+
+sub TABLE {
+    'Person';
+}
+
+sub DSN {
+    return 'dbi:SQLite:dbname=file.dat';
+}
+
+sub STRUCT_TEMPLATE {
+    return 'CREATE TABLE [% table %] (
+        id CHAR(18) PRIMARY KEY,
+        name VARCHAR(20) NOT NULL,
+        sex VARCHAR(2) NOT NULL,
+        nation VARCHAR(2) NOT NULL,
+        birth DATE NOT NULL,
+        address VARCHAR(60),
+        zipcode CHAR(6),
+        phone VARCHAR(25)
+    );';
+}
 
 sub age {
     my $self = shift;
